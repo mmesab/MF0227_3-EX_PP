@@ -12,3 +12,10 @@ Aplicación web desarrollada con Python y Django para la gestión centralizada d
 1. **Clonar el repositorio o descomprimir el proyecto:**
    ```bash
    cd helpdesk_system
+
+---
+
+## 📦 Notas sobre la Entrega y Datos de Prueba
+
+- **Repositorio GitHub:** Se ha mantenido una estructura limpia de código fuente y control de versiones (ramas `main` y `desarrollo`), excluyendo los archivos binarios de base de datos local por buenas prácticas de desarrollo.
+- **Archivo ZIP de Entrega:** El paquete `.zip` entregado incluye la base de datos precargada (`db.sqlite3`) con **técnicos e incidencias de prueba** ya creados, permitiendo evaluar la interfaz y el panel de administración de forma inmediata al iniciar el servidor local.
