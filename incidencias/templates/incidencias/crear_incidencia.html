@@ -1,15 +1,38 @@
 {% extends 'incidencias/base.html' %}
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card shadow-sm p-4">
-            <h2 class="mb-3 text-center">Registrar Nueva Incidencia</h2>
+    <div class="col-md-7 col-lg-6">
+        <div class="card shadow border-0 rounded-4 p-4 p-md-5 bg-white">
+            <div class="text-center mb-4">
+                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" style="width: 60px; height: 60px; font-size: 24px;">
+                    <i class="bi bi-file-earmark-plus"></i>
+                </div>
+                <h2 class="fw-bold text-dark">Nueva Incidencia</h2>
+                <p class="text-muted small">Rellena los campos para dar de alta un reporte técnico en el sistema.</p>
+            </div>
+
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-success w-100 mt-3">Guardar Incidencia</button>
+                
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small text-secondary">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger small mt-1">{{ field.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary py-2 fw-semibold shadow-sm">
+                        <i class="bi bi-check-lg me-1"></i> Guardar Incidencia
+                    </button>
+                    <a href="{% url 'lista_incidencias' %}" class="btn btn-light text-muted py-2 border">
+                        Cancelar
+                    </a>
+                </div>
             </form>
-            <a href="{% url 'lista_incidencias' %}" class="btn btn-secondary w-100 mt-2">Volver al listado</a>
         </div>
     </div>
 </div>
