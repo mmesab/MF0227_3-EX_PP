@@ -1,0 +1,20 @@
+PLAN DE PRUEBAS FUNCIONALES - HELPDESK SYSTEM (UF2406)
+=====================================================
+
+CASO DE PRUEBA 1: Validación de transición inválida de estados en POO (UF2404)
+- Módulo: core_modelos.py
+- Entrada: Instancia de TicketHardware en estado "Cerrado" intenta cambiar su atributo estado a "En Proceso".
+- Resultado Esperado: El setter bloquea la operación y lanza la excepción personalizada EstadoInvalidoError.
+- Resultado Obtenido: Excepción capturada correctamente con el mensaje "Transición no permitida: de 'Cerrado' a 'En Proceso'". (SUPERADO)
+
+CASO DE PRUEBA 2: Cálculo polimórfico de SLA según tipo y prioridad (UF2404)
+- Módulo: core_modelos.py
+- Entrada: TicketHardware con prioridad "Alta" vs TicketSoftware con prioridad "Alta".
+- Resultado Esperado: TicketHardware devuelve 12h y TicketSoftware devuelve 8h.
+- Resultado Obtenido: Cada subclase ejecuta su sobrescritura de calcular_sla() devolviendo los valores esperados. (SUPERADO)
+
+CASO DE PRUEBA 3: Registro de incidencia y validación de campos vacíos en interfaz web (UF2405)
+- Módulo: incidencias/views.py y crear_incidencia.html
+- Entrada: Envío del formulario web en /nueva/ dejando vacío el campo obligatorio "Título" y posterior envío con datos completos.
+- Resultado Esperado: En el primer intento Django impide el guardado mostrando aviso HTML5/Form; en el segundo guarda en SQLite y redirige al listado (/).
+- Resultado Obtenido: Validación ejecutada correctamente y registro visualizado en la tabla principal. (SUPERADO)
